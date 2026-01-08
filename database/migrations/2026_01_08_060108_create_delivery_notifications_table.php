@@ -12,9 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('delivery_notifications', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id('id_notification');
+    $table->foreignId('id_delivery')->constrained('deliveries', 'id_delivery');
+    $table->string('channel');
+    $table->string('status');
+    $table->timestamp('sent_at')->nullable();
+    $table->timestamps();
+});
+
     }
 
     /**

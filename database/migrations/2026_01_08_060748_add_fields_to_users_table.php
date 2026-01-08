@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-    $table->id('id_role');
-    $table->string('nama_role');
-    $table->text('deskripsi')->nullable();
-    $table->timestamps();
+       Schema::table('users', function (Blueprint $table) {
+    $table->foreignId('id_role')
+        ->constrained('roles', 'id_role');
+
+    $table->string('username')->unique();
+    $table->string('nama');
+    $table->string('no_telp');
 });
+
 
     }
 
@@ -25,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

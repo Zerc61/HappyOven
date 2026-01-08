@@ -12,9 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('umkm_profiles', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id('id_umkm');
+    $table->foreignId('id_user')->constrained('users', 'id_user');
+    $table->string('nama_toko');
+    $table->text('deskripsi_toko')->nullable();
+    $table->string('logo')->nullable();
+    $table->text('alamat_toko');
+    $table->boolean('status_verifikasi')->default(false);
+    $table->float('rating')->default(0);
+    $table->timestamps();
+});
+
     }
 
     /**

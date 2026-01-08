@@ -12,9 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id('id_address');
+    $table->foreignId('id_user')->constrained('users', 'id_user');
+    $table->string('label');
+    $table->text('alamat');
+    $table->boolean('is_default')->default(false);
+    $table->timestamps();
+});
+
     }
 
     /**

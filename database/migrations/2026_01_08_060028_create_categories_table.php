@@ -12,10 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id('id_category');
+    $table->string('nama_category');
+    $table->timestamps();
+});
+
     }
+
 
     /**
      * Reverse the migrations.

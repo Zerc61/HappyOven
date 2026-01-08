@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('drivers', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id('id_driver');
+    $table->string('nama_driver');
+    $table->string('no_telp');
+    $table->string('status')->default('aktif');
+    $table->timestamps();
+});
+
     }
 
     /**
